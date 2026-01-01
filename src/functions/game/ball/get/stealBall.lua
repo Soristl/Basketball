@@ -49,9 +49,7 @@ function stealBall(name, coordinatesX, coordinatesY)
 	print(minX)
 	print(minY)
 
-	if (math.abs(coordinatesX - playerX) <= minX and math.abs(
-		coordinatesY - playerY
-	) <= minY) then
+	if (math.abs(coordinatesX - playerX) <= minX and math.abs(coordinatesY - playerY) <= minY) then
 		tfm.exec.removeImage(playerImage[ballOwner])
 		tfm.exec.removeImage(playerArrowImage)
 		system.bindKeyboard(ballOwner, 32, false, false)

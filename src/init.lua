@@ -49,6 +49,11 @@ function init()
 		isPlayerDirectionRight[name] = true
 		playerForce[name] = 1
 		playerImage[name] = 999999
+		rankSettings[name] = {
+			page = 1,
+			sort = "",
+			open = false
+		}
 		tfm.exec.setNameColor(name, 0x9292AA)
 
 		tfm.exec.setPlayerScore(name, 0, false)
@@ -56,19 +61,7 @@ function init()
 		system.bindMouse(name, true)
 	end
 
-	ui.addTextArea(
-		0,
-		"<p align='center'><font size='25px'>Teams",
-		nil,
-		50,
-		260,
-		840,
-		270,
-		0xc191c,
-		0x8a583c,
-		1,
-		false
-	)
+	ui.addTextArea(0, "<p align='center'><font size='25px'>Teams", nil, 50, 260, 840, 270, 0xc191c, 0x8a583c, 1, false)
 
 	for i = 1, #x do
 		local event = "joinTeamRed" .. tostring(i) .. ""
@@ -79,19 +72,7 @@ function init()
 			color = 0x184F81
 		end
 
-		ui.addTextArea(
-			i,
-			"<p align='center'><font size='15px'><a href='event:" .. event .. "'>Join",
-			nil,
-			x[i],
-			y[i],
-			185,
-			40,
-			color,
-			color,
-			1,
-			false
-		)
+		ui.addTextArea(i, "<p align='center'><font size='15px'><a href='event:" .. event .. "'>Join", nil, x[i], y[i], 185, 40, color, color, 1, false)
 	end
 
 	lobbyTimer = os.time() + 15000

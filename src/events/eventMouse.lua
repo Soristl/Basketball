@@ -13,8 +13,7 @@ function eventMouse(name, x, y)
 			if playerTeam[name].team == "red" then
 				for i = 1, #playersRed do
 					if playersRed[i].name ~= name then
-						local playerStats =
-							tfm.get.room.playerList[playersRed[i].name]
+						local playerStats = tfm.get.room.playerList[playersRed[i].name]
 
 						if playerStats ~= nil then
 							local xPlayer = playerStats.x + (playerStats.vx * 5)
@@ -29,9 +28,7 @@ function eventMouse(name, x, y)
 							print(math.abs(y - yPlayer))
 							print("===")
 
-							if math.abs(x - xPlayer) <= 100 and math.abs(
-								y - yPlayer
-							) <= 100 then
+							if math.abs(x - xPlayer) <= 100 and math.abs(y - yPlayer) <= 100 then
 								if minX == 9999999 then
 									minX = xPlayer
 									playerSelected = playersRed[i].name
@@ -71,12 +68,7 @@ function eventMouse(name, x, y)
 
 						addTimer(
 							function(i)
-								system.bindKeyboard(
-									playerSelected,
-									32,
-									false,
-									true
-								)
+								system.bindKeyboard(playerSelected, 32, false, true)
 							end,
 							500,
 							1,
@@ -89,8 +81,7 @@ function eventMouse(name, x, y)
 			elseif playerTeam[name].team == "blue" then
 				for i = 1, #playersBlue do
 					if playersBlue[i].name ~= name then
-						local playerStats =
-							tfm.get.room.playerList[playersBlue[i].name]
+						local playerStats = tfm.get.room.playerList[playersBlue[i].name]
 
 						if playerStats ~= nil then
 							local xPlayer = playerStats.x + (playerStats.vx * 5)
@@ -105,9 +96,7 @@ function eventMouse(name, x, y)
 							print(math.abs(y - yPlayer))
 							print("===")
 
-							if math.abs(x - xPlayer) <= 100 and math.abs(
-								y - yPlayer
-							) <= 100 then
+							if math.abs(x - xPlayer) <= 100 and math.abs(y - yPlayer) <= 100 then
 								if minX == 9999999 then
 									minX = xPlayer
 									playerSelected = playersBlue[i].name
@@ -148,12 +137,7 @@ function eventMouse(name, x, y)
 
 						addTimer(
 							function(i)
-								system.bindKeyboard(
-									playerSelected,
-									32,
-									false,
-									true
-								)
+								system.bindKeyboard(playerSelected, 32, false, true)
 							end,
 							1000,
 							1,

@@ -22,11 +22,7 @@ function verifyBallPoint()
 
 							if playerLastPass ~= "" then
 								if playerTeam[playerLastPass].team == "red" then
-									tfm.exec.setPlayerScore(
-										playerLastPass,
-										1,
-										true
-									)
+									tfm.exec.setPlayerScore(playerLastPass, 1, true)
 								end
 							end
 						end
@@ -38,11 +34,7 @@ function verifyBallPoint()
 
 							if playerLastPass ~= "" then
 								if playerTeam[playerLastPass].team == "red" then
-									tfm.exec.setPlayerScore(
-										playerLastPass,
-										1,
-										true
-									)
+									tfm.exec.setPlayerScore(playerLastPass, 1, true)
 								end
 							end
 						end
@@ -78,11 +70,7 @@ function verifyBallPoint()
 
 							if playerLastPass ~= "" then
 								if playerTeam[playerLastPass].team == "blue" then
-									tfm.exec.setPlayerScore(
-										playerLastPass,
-										1,
-										true
-									)
+									tfm.exec.setPlayerScore(playerLastPass, 1, true)
 								end
 							end
 						end
@@ -94,26 +82,14 @@ function verifyBallPoint()
 
 							if playerLastPass ~= "" then
 								if playerTeam[playerLastPass].team == "blue" then
-									tfm.exec.setPlayerScore(
-										playerLastPass,
-										1,
-										true
-									)
+									tfm.exec.setPlayerScore(playerLastPass, 1, true)
 								end
 							end
 						end
 					end
 
 					if blueScore < winscore then
-						tfm.exec.moveObject(
-							ball_id,
-							1534,
-							218,
-							false,
-							0,
-							0,
-							true
-						)
+						tfm.exec.moveObject(ball_id, 1534, 218, false, 0, 0, true)
 					else
 						tfm.exec.removeObject(ball_id)
 						timerEnd = os.time() + 5000

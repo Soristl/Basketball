@@ -1,11 +1,7 @@
 function eventChatCommand(name, c)
 	local command = string.lower(c)
 	if mode == "lobby" then
-		if string.sub(
-			command,
-			1,
-			9
-		) == "stoptimer" and permanentAdmins[name] then
+		if string.sub(command, 1, 9) == "stoptimer" and permanentAdmins[name] then
 			local args = split(command)
 
 			if args[2] ~= "true" or args[2] ~= "false" then
@@ -52,11 +48,7 @@ function eventChatCommand(name, c)
 			print("X: " .. tostring(x))
 			print("Y: " .. tostring(y))
 			print("===")
-		elseif string.sub(
-			command,
-			1,
-			5
-		) == "arrow" and permanentAdmins[name] then
+		elseif string.sub(command, 1, 5) == "arrow" and permanentAdmins[name] then
 			local args = split(command)
 
 			if args[2] == nil then return end

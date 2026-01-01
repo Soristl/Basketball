@@ -27,10 +27,7 @@ var self = (module.exports = function (input, outputPath, options) {
 	options.delimeterAfter = options.delimeterAfter || ""
 	options.watchDir = options.watchDir || "src"
 
-	if (
-		process.argv[2] == "watch" &&
-		typeof currentlyWatching === "undefined"
-	) {
+	if (process.argv[2] == "watch" && typeof currentlyWatching === "undefined") {
 		console.log("\x1b[32m%s\x1b[0m", "Watching for changes...")
 		currentlyWatching = true
 		return watch.watchTree("src", function (f, curr, prev) {
@@ -53,17 +50,8 @@ var self = (module.exports = function (input, outputPath, options) {
 	})
 
 	inputAllFiles.forEach(function (inputPath, index) {
-		if (
-			options.delimeterBefore.length > 0 ||
-			options.delimeterAfter.length > 0
-		) {
-			outputFile.write(
-				(index == 0 ? "" : "\n\n") +
-					options.delimeterBefore +
-					inputPath +
-					options.delimeterAfter +
-					"\n\n"
-			)
+		if (options.delimeterBefore.length > 0 || options.delimeterAfter.length > 0) {
+			outputFile.write((index == 0 ? "" : "\n\n") + options.delimeterBefore + inputPath + options.delimeterAfter + "\n\n")
 		}
 
 		var fileContents = fs.readFileSync(inputPath, "utf8")

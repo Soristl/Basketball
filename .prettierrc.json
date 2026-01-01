@@ -4,5 +4,6 @@
 	"tabWidth": 4,
 	"semi": false,
 	"trailingComma": "none",
+	"printWidth": 160,
 	"plugins": ["@prettier/plugin-lua"]
 }

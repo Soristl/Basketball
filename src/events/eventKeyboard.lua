@@ -143,15 +143,7 @@ function eventKeyboard(name, key, down, x, y, xv, yv)
 					vy = 0
 				end
 
-				tfm.exec.movePlayer(
-					name,
-					0,
-					0,
-					true,
-					0 + vx,
-					increaseJump + vy,
-					true
-				)
+				tfm.exec.movePlayer(name, 0, 0, true, 0 + vx, increaseJump + vy, true)
 				playerDelayWall[name] = true
 
 				delayWall = addTimer(

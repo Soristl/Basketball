@@ -5,9 +5,7 @@ function eventPlayerLeft(name)
 			playersRed[playerTeam[name].index].name = ""
 			ui.addTextArea(
 				playerTeam[name].index,
-				"<p align='center'><font size='15px'><a href='event:joinTeamRed" .. tostring(
-					playerTeam[name].index
-				) .. "'>Join",
+				"<p align='center'><font size='15px'><a href='event:joinTeamRed" .. tostring(playerTeam[name].index) .. "'>Join",
 				nil,
 				x[playerTeam[name].index],
 				y[playerTeam[name].index],
@@ -28,9 +26,7 @@ function eventPlayerLeft(name)
 			playersBlue[playerTeam[name].index].name = ""
 			ui.addTextArea(
 				playerTeam[name].index + 6,
-				"<p align='center'><font size='15px'><a href='event:joinTeamBlue" .. tostring(
-					playerTeam[name].index
-				) .. "'>Join",
+				"<p align='center'><font size='15px'><a href='event:joinTeamBlue" .. tostring(playerTeam[name].index) .. "'>Join",
 				nil,
 				x[playerTeam[name].index + 6],
 				y[playerTeam[name].index + 6],

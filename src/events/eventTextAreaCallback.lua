@@ -1,7 +1,5 @@
 function eventTextAreaCallback(id, name, c)
-	if string.sub(c, 1, 11) == "joinTeamRed" and playersRed[tonumber(
-		string.sub(c, 12)
-	)].name == "" and not playersInGame[name] then
+	if string.sub(c, 1, 11) == "joinTeamRed" and playersRed[tonumber(string.sub(c, 12))].name == "" and not playersInGame[name] then
 		local index = tonumber(string.sub(c, 12))
 
 		playersRed[index].name = name
@@ -24,9 +22,7 @@ function eventTextAreaCallback(id, name, c)
 			1,
 			false
 		)
-	elseif string.sub(c, 1, 12) == "leaveTeamRed" and playersRed[tonumber(
-		string.sub(c, 13)
-	)].name == name and playersInGame[name] then
+	elseif string.sub(c, 1, 12) == "leaveTeamRed" and playersRed[tonumber(string.sub(c, 13))].name == name and playersInGame[name] then
 		local index = tonumber(string.sub(c, 13))
 
 		playersRed[index].name = ""
@@ -49,9 +45,7 @@ function eventTextAreaCallback(id, name, c)
 			1,
 			false
 		)
-	elseif string.sub(c, 1, 12) == "joinTeamBlue" and playersBlue[tonumber(
-		string.sub(c, 13)
-	)].name == "" and not playersInGame[name] then
+	elseif string.sub(c, 1, 12) == "joinTeamBlue" and playersBlue[tonumber(string.sub(c, 13))].name == "" and not playersInGame[name] then
 		local index = tonumber(string.sub(c, 13))
 
 		playersBlue[index].name = name
@@ -74,9 +68,7 @@ function eventTextAreaCallback(id, name, c)
 			1,
 			false
 		)
-	elseif string.sub(c, 1, 13) == "leaveTeamBlue" and playersBlue[tonumber(
-		string.sub(c, 14)
-	)].name == name and playersInGame[name] then
+	elseif string.sub(c, 1, 13) == "leaveTeamBlue" and playersBlue[tonumber(string.sub(c, 14))].name == name and playersInGame[name] then
 		local index = tonumber(string.sub(c, 14))
 
 		playersBlue[index].name = ""

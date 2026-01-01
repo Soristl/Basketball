@@ -20,6 +20,11 @@ function eventNewPlayer(name)
 		team = "",
 		index = 1
 	}
+	rankSettings[name] = {
+		page = 1,
+		sort = "",
+		open = false
+	}
 	isPlayerDirectionRight[name] = true
 	playerForce[name] = 1
 	playerImage[name] = 99999

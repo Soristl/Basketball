@@ -7,19 +7,7 @@ function eventLoop()
 		local x = math.ceil((lobbyTimer - os.time()) / 1000)
 		local c = string.format("%d", x)
 
-		ui.addTextArea(
-			13,
-			"<p align='center'><r>Game starting in " .. c .. "s",
-			nil,
-			375,
-			300,
-			200,
-			20,
-			0x161616,
-			0x161616,
-			0,
-			false
-		)
+		ui.addTextArea(13, "<p align='center'><r>Game starting in " .. c .. "s", nil, 375, 300, 200, 20, 0x161616, 0x161616, 0, false)
 
 		gameStats.stopTimerSeconds = x
 

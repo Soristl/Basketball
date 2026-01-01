@@ -34,9 +34,7 @@ function getBall(name, coordinatesX, coordinatesY)
 	print(math.abs(coordinatesY - y))
 	print("=====")
 
-	if (math.abs(coordinatesX - x) <= 80 and math.abs(
-		coordinatesY - y
-	) <= 80) then
+	if (math.abs(coordinatesX - x) <= 80 and math.abs(coordinatesY - y) <= 80) then
 		tfm.exec.removeObject(ball_id)
 		ball_id = nil
 		playerForce[ballOwner] = 1

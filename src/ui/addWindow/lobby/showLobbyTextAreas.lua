@@ -1,25 +1,11 @@
 function showLobbyTextAreas(name)
-	ui.addTextArea(
-		0,
-		"<p align='center'><font size='25px'>Teams",
-		name,
-		50,
-		260,
-		840,
-		270,
-		0xc191c,
-		0x8a583c,
-		1,
-		false
-	)
+	ui.addTextArea(0, "<p align='center'><font size='25px'>Teams", name, 50, 260, 840, 270, 0xc191c, 0x8a583c, 1, false)
 
 	for i = 1, #playersRed do
 		if playersRed[i].name == "" then
 			ui.addTextArea(
 				i,
-				"<p align='center'><font size='15px'><a href='event:" .. "joinTeamRed" .. tostring(
-					i
-				) .. "'>Join",
+				"<p align='center'><font size='15px'><a href='event:" .. "joinTeamRed" .. tostring(i) .. "'>Join",
 				name,
 				x[i],
 				y[i],
