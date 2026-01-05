@@ -19,10 +19,12 @@ function verifyBallPoint()
 
 						if playerTeam[playerLastShoot].team == "red" then
 							tfm.exec.setPlayerScore(playerLastShoot, 3, true)
+							rankPlayer[playerLastShoot].d3 = rankPlayer[playerLastShoot].d3 + 3
 
 							if playerLastPass ~= "" then
 								if playerTeam[playerLastPass].team == "red" then
 									tfm.exec.setPlayerScore(playerLastPass, 1, true)
+									rankPlayer[playerLastPass].assists = rankPlayer[playerLastPass].assists + 1
 								end
 							end
 						end
@@ -31,10 +33,12 @@ function verifyBallPoint()
 
 						if playerTeam[playerLastShoot].team == "red" then
 							tfm.exec.setPlayerScore(playerLastShoot, 2, true)
+							rankPlayer[playerLastShoot].d2 = rankPlayer[playerLastShoot].d2 + 2
 
 							if playerLastPass ~= "" then
 								if playerTeam[playerLastPass].team == "red" then
 									tfm.exec.setPlayerScore(playerLastPass, 1, true)
+									rankPlayer[playerLastPass].assists = rankPlayer[playerLastPass].assists + 1
 								end
 							end
 						end
@@ -43,6 +47,11 @@ function verifyBallPoint()
 					if redScore < winscore then
 						tfm.exec.moveObject(ball_id, 54, 218, false, 0, 0, true)
 					else
+						for i = 1, #playersRed do
+							if playersRed[i].name ~= "" then
+								rankPlayer[playersRed[i].name].wins = rankPlayer[playersRed[i].name].wins + 1
+							end
+						end
 						tfm.exec.removeObject(ball_id)
 						timerEnd = os.time() + 5000
 						mode = "end"
@@ -67,10 +76,12 @@ function verifyBallPoint()
 
 						if playerTeam[playerLastShoot].team == "blue" then
 							tfm.exec.setPlayerScore(playerLastShoot, 3, true)
+							rankPlayer[playerLastShoot].d3 = rankPlayer[playerLastShoot].d3 + 3
 
 							if playerLastPass ~= "" then
 								if playerTeam[playerLastPass].team == "blue" then
 									tfm.exec.setPlayerScore(playerLastPass, 1, true)
+									rankPlayer[playerLastPass].assists = rankPlayer[playerLastPass].assists + 1
 								end
 							end
 						end
@@ -79,10 +90,12 @@ function verifyBallPoint()
 
 						if playerTeam[playerLastShoot].team == "blue" then
 							tfm.exec.setPlayerScore(playerLastShoot, 2, true)
+							rankPlayer[playerLastShoot].d2 = rankPlayer[playerLastShoot].d2 + 2
 
 							if playerLastPass ~= "" then
 								if playerTeam[playerLastPass].team == "blue" then
 									tfm.exec.setPlayerScore(playerLastPass, 1, true)
+									rankPlayer[playerLastPass].assists = rankPlayer[playerLastPass].assists + 1
 								end
 							end
 						end
@@ -91,6 +104,11 @@ function verifyBallPoint()
 					if blueScore < winscore then
 						tfm.exec.moveObject(ball_id, 1534, 218, false, 0, 0, true)
 					else
+						for i = 1, #playersBlue do
+							if playersBlue[i].name ~= "" then
+								rankPlayer[playersBlue[i].name].wins = rankPlayer[playersBlue[i].name].wins + 1
+							end
+						end
 						tfm.exec.removeObject(ball_id)
 						timerEnd = os.time() + 5000
 						mode = "end"

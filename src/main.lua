@@ -45,3 +45,23 @@ local increaseYBall = 5
 local increaseXPlayer = 10
 local increaseYPlayer = 5
 local rankSettings = {}
+local rankPlayer = {}
+local playerTeamHistory = {}
+local rankRoom = {}
+
+
+-- for i = 1, 29 do
+-- 	rankPlayer["G" .. tostring(i) .. "#0000"] = {
+-- 		name = "G" .. tostring(i) .. "#0000",
+-- 		matches = 0,
+-- 		wins = 0,
+-- 		winRatio = 0,
+-- 		def = 0,
+-- 		passes = 0,
+-- 		assists = 0,
+-- 		d3 = 0,
+-- 		d2 = 0,
+-- 		points = 0,
+-- 		total = 0
+-- 	}
+-- end

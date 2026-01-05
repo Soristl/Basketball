@@ -43,6 +43,7 @@ function eventMouse(name, x, y)
 					if playerSelected ~= "" then
 						tfm.exec.removeImage(playerImage[name])
 						system.bindKeyboard(name, 32, false, false)
+						rankPlayer[name].passes = rankPlayer[name].passes + 1
 						tfm.exec.removeImage(ballIdImage)
 						removeTimer("chargeBallForce" .. name)
 						removeTimer("canCatchBall")
@@ -111,6 +112,7 @@ function eventMouse(name, x, y)
 					if playerSelected ~= "" then
 						tfm.exec.removeImage(playerImage[name])
 						system.bindKeyboard(name, 32, false, false)
+						rankPlayer[name].passes = rankPlayer[name].passes + 1
 						tfm.exec.removeImage(ballIdImage)
 						removeTimer("chargeBallForce" .. name)
 						removeTimer("canCatchBall")

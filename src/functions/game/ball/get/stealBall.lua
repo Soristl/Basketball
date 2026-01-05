@@ -65,6 +65,7 @@ function stealBall(name, coordinatesX, coordinatesY)
 		playerLastShoot = name
 		playerLastPass = ""
 		setPlayerArrowImage(name)
+		rankPlayer[name].def = rankPlayer[name].def + 1
 
 		removeTimer("canCatchBall")
 		removeTimer("bindSpace")

@@ -51,9 +51,28 @@ function init()
 		playerImage[name] = 999999
 		rankSettings[name] = {
 			page = 1,
-			sort = "",
+			sort = "total",
 			open = false
 		}
+
+		playerTeamHistory[name] = {}
+
+		if rankPlayer[name] == nil then
+			rankPlayer[name] = {
+				name = name,
+				matches = 0,
+				wins = 0,
+				winRatio = 0,
+				def = 0,
+				passes = 0,
+				assists = 0,
+				d3 = 0,
+				d2 = 0,
+				points = 0,
+				total = 0
+			}
+		end
+
 		tfm.exec.setNameColor(name, 0x9292AA)
 
 		tfm.exec.setPlayerScore(name, 0, false)

@@ -13,6 +13,21 @@ function eventKeyboard(name, key, down, x, y, xv, yv)
 		tfm.get.room.playerList[name].vy = yv
 	end
 
+	if key == 76 then
+		if rankSettings[name].open then
+			rankSettings[name].open = false
+
+			removeRankingUI(name)
+
+			return
+		end
+
+		rankSettings[name].sort = "total"
+		rankSettings[name].page = 1
+		rankSettings[name].open = true
+		rankingUI(name)
+	end
+
 	if mode == "game" and playersInGame[name] then
 		local OffsetX = 0
 		local OffsetY = 0

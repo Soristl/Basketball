@@ -107,6 +107,25 @@ function eventChatCommand(name, c)
 							index = i
 						}
 
+						local foundTeam = false
+
+						for i = 1, #playerTeamHistory[name] do
+							local team = playerTeamHistory[name][i]
+
+							if team == "blue" then
+								foundTeam = true
+
+								break
+							end
+						end
+
+						if not foundTeam then
+							local length = #playerTeamHistory[name]
+
+							playerTeamHistory[length + 1] = "blue"
+							rankPlayer[name].matches = rankPlayer[name].matches + 1
+						end
+
 						teleportPlayerToTeam(name)
 
 						playerCanGetBall[name] = false
@@ -136,6 +155,25 @@ function eventChatCommand(name, c)
 							index = i
 						}
 
+						local foundTeam = false
+
+						for i = 1, #playerTeamHistory[name] do
+							local team = playerTeamHistory[name][i]
+
+							if team == "red" then
+								foundTeam = true
+
+								break
+							end
+						end
+
+						if not foundTeam then
+							local length = #playerTeamHistory[name]
+
+							playerTeamHistory[length + 1] = "red"
+							rankPlayer[name].matches = rankPlayer[name].matches + 1
+						end
+
 						teleportPlayerToTeam(name)
 
 						playerCanGetBall[name] = false
@@ -164,6 +202,25 @@ function eventChatCommand(name, c)
 							team = "red",
 							index = i
 						}
+
+						local foundTeam = false
+
+						for i = 1, #playerTeamHistory[name] do
+							local team = playerTeamHistory[name][i]
+
+							if team == "red" then
+								foundTeam = true
+
+								break
+							end
+						end
+
+						if not foundTeam then
+							local length = #playerTeamHistory[name]
+
+							playerTeamHistory[length + 1] = "red"
+							rankPlayer[name].matches = rankPlayer[name].matches + 1
+						end
 
 						teleportPlayerToTeam(name)
 
