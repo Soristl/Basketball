@@ -41,7 +41,7 @@ function stealBall(name, coordinatesX, coordinatesY)
 		minY = 50
 	end
 
-	if isCorner then
+	if isCorner and coordinatesY <= 205 then
 		minX = 200
 		minY = 200
 	end

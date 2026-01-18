@@ -14,7 +14,7 @@ function eventLoop()
 		if x == 0 then
 			local quantity = quantityPlayers()
 
-			if quantity.red >= 1 and quantity.blue >= 1 then
+			if quantity.red >= 0 and quantity.blue >= 0 then
 				mode = "wait-start"
 
 				startGame()

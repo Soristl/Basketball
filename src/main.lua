@@ -48,6 +48,7 @@ local rankSettings = {}
 local rankPlayer = {}
 local playerTeamHistory = {}
 local rankRoom = {}
+local delayCountPass = {}
 
 
 -- for i = 1, 29 do

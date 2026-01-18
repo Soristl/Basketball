@@ -38,6 +38,7 @@ function init()
 			end
 		end
 
+		delayCountPass[name] = false
 		playerDisableWall[name] = false
 		playerDelayWall[name] = false
 		playerCanGetBall[name] = true

@@ -1,4 +1,8 @@
 function eventMouse(name, x, y)
+	local playerX = tfm.get.room.playerList[name].x
+
+	if math.abs(x - playerX) > 580 then return end
+
 	print("===")
 	print("EVENT MOUSE")
 	print(name)
@@ -43,7 +47,20 @@ function eventMouse(name, x, y)
 					if playerSelected ~= "" then
 						tfm.exec.removeImage(playerImage[name])
 						system.bindKeyboard(name, 32, false, false)
-						rankPlayer[name].passes = rankPlayer[name].passes + 1
+						if not delayCountPass[name] then
+							rankPlayer[name].passes = rankPlayer[name].passes + 1
+
+							delayCountPass[name] = true
+
+							addTimer(
+								function(i)
+									delayCountPass[name] = false
+								end,
+								500,
+								1
+							)
+						end
+
 						tfm.exec.removeImage(ballIdImage)
 						removeTimer("chargeBallForce" .. name)
 						removeTimer("canCatchBall")
@@ -112,7 +129,19 @@ function eventMouse(name, x, y)
 					if playerSelected ~= "" then
 						tfm.exec.removeImage(playerImage[name])
 						system.bindKeyboard(name, 32, false, false)
-						rankPlayer[name].passes = rankPlayer[name].passes + 1
+						if not delayCountPass[name] then
+							rankPlayer[name].passes = rankPlayer[name].passes + 1
+
+							delayCountPass[name] = true
+
+							addTimer(
+								function(i)
+									delayCountPass[name] = false
+								end,
+								500,
+								1
+							)
+						end
 						tfm.exec.removeImage(ballIdImage)
 						removeTimer("chargeBallForce" .. name)
 						removeTimer("canCatchBall")
