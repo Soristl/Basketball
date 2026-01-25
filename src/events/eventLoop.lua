@@ -22,6 +22,23 @@ function eventLoop()
 				lobbyTimer = os.time() + 15000
 			end
 		end
+	elseif mode == "game" then
+		local name = ballOwner
+		local playerStats = tfm.get.room.playerList[name]
+
+		if name ~= "" then
+			if playerPressSpace[name] then
+				if playerForce[name] <= 6 then
+					playerForce[name] = playerForce[name] + 1
+				else
+					playerForce[name] = 1
+				end
+				setImageCharge(name, playerForce[name])
+			else
+				tfm.exec.removeImage(playerImage[name])
+				playerForce[name] = 0
+			end
+		end
 	elseif mode == "end" then
 		local x = math.ceil((timerEnd - os.time()) / 1000)
 		local c = string.format("%d", x)

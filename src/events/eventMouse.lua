@@ -70,7 +70,7 @@ function eventMouse(name, x, y)
 						setPlayerArrowImage(playerSelected)
 
 						ballOwner = playerSelected
-						playerForce[playerSelected] = 1
+						playerForce[playerSelected] = 0
 						ballOwnerPressDown = false
 						canCatchBall = false
 						playerLastPass = name
@@ -152,7 +152,7 @@ function eventMouse(name, x, y)
 						setPlayerArrowImage(playerSelected)
 
 						ballOwner = playerSelected
-						playerForce[playerSelected] = 1
+						playerForce[playerSelected] = 0
 						ballOwnerPressDown = false
 						canCatchBall = false
 						playerLastPass = name

@@ -17,9 +17,10 @@ function eventNewPlayer(name)
 		open = false
 	}
 	isPlayerDirectionRight[name] = true
-	playerForce[name] = 1
+	playerForce[name] = 0
 	playerImage[name] = 99999
 	delayCountPass[name] = false
+	playerPressSpace[name] = false
 
 	if playerTeamHistory[name] == nil then
 		playerTeamHistory[name] = {}

@@ -37,9 +37,10 @@ function getBall(name, coordinatesX, coordinatesY)
 	if (math.abs(coordinatesX - x) <= 80 and math.abs(coordinatesY - y) <= 80) then
 		tfm.exec.removeObject(ball_id)
 		ball_id = nil
-		playerForce[ballOwner] = 1
+		playerForce[ballOwner] = 0
 		ballOwner = name
-		playerForce[ballOwner] = 1
+		playerForce[ballOwner] = 0
+		playerPressSpace[ballOwner] = false
 		removeTimer("chargeBallForce" .. playerLastShoot)
 		ballOwnerPressDown = false
 		-- canCatchBall = false

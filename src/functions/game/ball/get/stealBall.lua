@@ -41,7 +41,7 @@ function stealBall(name, coordinatesX, coordinatesY)
 		minY = 50
 	end
 
-	if isCorner and coordinatesY <= 205 then
+	if isCorner and coordinatesY <= 205 and playerOwner.y <= 205 then
 		minX = 200
 		minY = 200
 	end
@@ -52,23 +52,16 @@ function stealBall(name, coordinatesX, coordinatesY)
 	if (math.abs(coordinatesX - playerX) <= minX and math.abs(coordinatesY - playerY) <= minY) then
 		tfm.exec.removeImage(playerImage[ballOwner])
 		tfm.exec.removeImage(playerArrowImage)
-		system.bindKeyboard(ballOwner, 32, false, false)
 		tfm.exec.removeImage(ballIdImage)
-		removeTimer("chargeBallForce" .. playerLastShoot)
-		removeTimer("chargeBallForce" .. ballOwner)
 		canCatchBall = false
-		playerForce[ballOwner] = 1
+		playerForce[ballOwner] = 0
 		ballOwner = name
-		playerForce[ballOwner] = 1
-		ballOwnerPressDown = false
+		playerForce[ballOwner] = 0
 		playerCanGetBall[ballOwner] = true
 		playerLastShoot = name
 		playerLastPass = ""
 		setPlayerArrowImage(name)
 		rankPlayer[name].def = rankPlayer[name].def + 1
-
-		removeTimer("canCatchBall")
-		removeTimer("bindSpace")
 
 		addTimer(
 			function(i)

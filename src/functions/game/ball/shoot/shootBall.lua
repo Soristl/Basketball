@@ -12,22 +12,21 @@ function shootBall(name, x, y)
 		timer = 2500
 	end
 
-	if playerForce[name] == 1 then
-		removeTimer("chargeBallForce" .. name)
-		playerForce[name] = 1
+	if playerForce[name] <= 1 then
+		playerForce[name] = 0
 		tfm.exec.removeImage(playerImage[name])
 
-		system.bindKeyboard(name, 32, false, false)
+		-- system.bindKeyboard(name, 32, false, false)
 
-		addTimer(
-			function(i)
-				system.bindKeyboard(name, 32, false, true)
-				ballOwnerPressDown = false
-			end,
-			500,
-			1,
-			"chargeBallForce"
-		)
+		-- addTimer(
+		-- 	function(i)
+		-- 		system.bindKeyboard(name, 32, false, true)
+		-- 		ballOwnerPressDown = false
+		-- 	end,
+		-- 	500,
+		-- 	1,
+		-- 	"chargeBallForce"
+		-- )
 
 		return
 	elseif playerForce[name] == 2 then
@@ -115,27 +114,7 @@ function shootBall(name, x, y)
 
 		ball_id = tfm.exec.addShamanObject(17, x, y, 0, 0, 0, true)
 		tfm.exec.moveObject(ball_id, 0, 0, true, vx, vy, true, 0, true)
-	elseif playerForce[name] == 6 then
-		local vx = -7.5
-		local vy = -10
-
-		if x <= 274 or x >= 1327 then
-			vy = -13
-		end
-
-		if isPlayerDirectionRight[name] then
-			vx = 7.5
-		end
-
-		if x <= 274 and isPlayerDirectionRight[name] then
-			vy = -10
-		elseif x >= 1330 and not isPlayerDirectionRight[name] then
-			vy = -10
-		end
-
-		ball_id = tfm.exec.addShamanObject(17, x, y, 0, 0, 0, true)
-		tfm.exec.moveObject(ball_id, 0, 0, true, vx, vy, true, 0, true)
-	elseif playerForce[name] == 7 then
+	elseif playerForce[name] >= 6 then
 		local vx = -9
 		local vy = -12
 
@@ -162,10 +141,9 @@ function shootBall(name, x, y)
 	tfm.exec.removeImage(playerImage[name])
 	tfm.exec.removeImage(playerArrowImage)
 	playerLastShoot = name
-	system.bindKeyboard(name, 32, false, false)
 	lastBallCoordX = x
 	tfm.exec.removeImage(ballIdImage)
-	playerForce[name] = 1
+	playerForce[name] = 0
 	removeTimer("chargeBallForce" .. name)
 	removeTimer("canCatchBall")
 	ballOwner = ""

@@ -3,7 +3,6 @@ function eventKeyboard(name, key, down, x, y, xv, yv)
 
 	if name ~= ballOwner then
 		tfm.exec.removeImage(playerImage[name])
-		removeTimer("chargeBallForce" .. name)
 	end
 
 	if playerData ~= nil then
@@ -64,6 +63,12 @@ function eventKeyboard(name, key, down, x, y, xv, yv)
 			end
 		end
 
+		if key == 32 and down then
+			playerPressSpace[name] = true
+		elseif key == 32 and not down then
+			playerPressSpace[name] = false
+		end
+
 		if key == 32 and playerCanGetBall[name] and ballOwner ~= name and down and canCatchBall then
 			if ballOwner == "" then
 				getBall(name, x, y)
@@ -74,65 +79,12 @@ function eventKeyboard(name, key, down, x, y, xv, yv)
 			return
 		end
 
-		if key == 32 and ballOwner == name and ballOwnerPressDown and playerCanGetBall[name] and ballCanShoot then
-			removeTimer("ballDown")
-			ballOwnerPressDown = false
-			system.bindKeyboard(name, 32, false, false)
+		if key == 32 and ballOwner == name and not playerPressSpace[name] then
 			tfm.exec.removeImage(playerImage[name])
 
 			shootBall(name, x, y)
 
-			playerForce[name] = 1
-			removeTimer("chargeBallForce" .. name)
-
-			return
-		end
-
-		if key == 32 and ballOwner == name and not ballOwnerPressDown and down and playerCanGetBall[name] then
-			removeTimer("ballDown")
-			playerForce[name] = 1
-			removeTimer("chargeBallForce" .. name)
-			removeTimer("ballCanShoot")
-
-			ballCanShoot = false
-
-			addTimer(
-				function(i)
-					if i == 1 then
-						ballCanShoot = true
-					end
-				end,
-				1000,
-				1,
-				"ballCanShoot"
-			)
-
-			if ballOwner == name and not ballOwnerPressDown then
-				ballOwnerPressDown = true
-				playerForce[name] = 1
-				removeTimer("chargeBallForce" .. name)
-				chargeBallForce(name)
-				tfm.exec.removeImage(playerImage[name])
-			end
-
-			return
-		end
-
-		if key == 32 and ballOwner == name and not down then
-			removeTimer("ballDown")
-			playerForce[name] = 1
-			removeTimer("chargeBallForce" .. name)
-			ballOwnerPressDown = false
-
-			-- playerCanGetBall[name] = false
-
-			-- removeTimer("canCatch"..name)
-
-			-- canCatch = addTimer(function(i)
-			--     if i == 1 then
-			--         playerCanGetBall[name] = true
-			--     end
-			-- end, 500, 1, "canCatch"..name)
+			playerForce[name] = 0
 
 			return
 		end
@@ -159,6 +111,7 @@ function eventKeyboard(name, key, down, x, y, xv, yv)
 				end
 
 				tfm.exec.movePlayer(name, 0, 0, true, 0 + vx, increaseJump + vy, true)
+				tfm.get.room.playerList[name].y = tfm.get.room.playerList[name].y + (increaseJump + vy)
 				playerDelayWall[name] = true
 
 				delayWall = addTimer(

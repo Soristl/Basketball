@@ -1,5 +1,5 @@
 function setImageCharge(name, force)
-	if force == 1 then
+	if force <= 1 then
 		tfm.exec.removeImage(playerImage[name])
 		playerImage[name] = tfm.exec.addImage("img@19afe940b7c", "$" .. name, -10, 15, name, 1, 1, _, 1)
 	elseif force == 2 then
@@ -14,7 +14,7 @@ function setImageCharge(name, force)
 	elseif force == 5 then
 		tfm.exec.removeImage(playerImage[name])
 		playerImage[name] = tfm.exec.addImage("img@19afe9b947d", "$" .. name, -10, 15, name, 1, 1, _, 1)
-	elseif force >= 7 then
+	elseif force >= 6 then
 		tfm.exec.removeImage(playerImage[name])
 		playerImage[name] = tfm.exec.addImage("img@19afe9bc468", "$" .. name, -10, 15, name, 1, 1, _, 1)
 	end

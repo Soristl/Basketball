@@ -266,11 +266,9 @@ function eventChatCommand(name, c)
 			playersInGame[name] = false
 			tfm.exec.setNameColor(name, 0x9292AA)
 			tfm.exec.movePlayer(name, 800, 50)
-			system.bindKeyboard(name, 32, false, false)
 
 			if name == ballOwner then
 				tfm.exec.removeImage(playerImage[ballOwner])
-				system.bindKeyboard(ballOwner, 32, false, false)
 				tfm.exec.removeImage(playerArrowImage)
 				ballOwner = ""
 				lastBallCoordX = x

@@ -28,6 +28,7 @@ local playerCanGetBall = {}
 local playerTeam = {}
 local playerForce = {}
 local playerImage = {}
+local playerPressSpace = {}
 local keys = { 0, 1, 2, 3, 32, 76 }
 local ballOwner = ""
 local ballOwnerPressDown = false

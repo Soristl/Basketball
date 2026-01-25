@@ -66,11 +66,10 @@ function eventPlayerLeft(name)
 			playersInGame[name] = false
 
 			if name == ballOwner then
-				system.bindKeyboard(ballOwner, 32, false, false)
 				ballOwner = ""
 				lastBallCoordX = 0
 				tfm.exec.removeImage(ballIdImage)
-				playerForce[name] = 1
+				playerForce[name] = 0
 				removeTimer("chargeBallForce" .. name)
 				removeTimer("canCatchBall")
 
