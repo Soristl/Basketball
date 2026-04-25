@@ -31,11 +31,13 @@ function eventLoop()
 				if playerForce[name] <= 6 then
 					playerForce[name] = playerForce[name] + 1
 				else
-					playerForce[name] = 1
+					playerForce[name] = 0
 				end
 				setImageCharge(name, playerForce[name])
 			else
-				tfm.exec.removeImage(playerImage[name])
+				ui.removeTextArea(58, name)
+				ui.removeTextArea(59, name)
+				ui.removeTextArea(60, name)
 				playerForce[name] = 0
 			end
 		end

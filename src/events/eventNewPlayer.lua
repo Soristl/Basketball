@@ -7,6 +7,7 @@ function eventNewPlayer(name)
 	playerDelayWall[name] = false
 	playerCanGetBall[name] = true
 	playersInGame[name] = false
+	lastPlayerKey[name] = 0
 	playerTeam[name] = {
 		team = "",
 		index = 1
@@ -18,7 +19,6 @@ function eventNewPlayer(name)
 	}
 	isPlayerDirectionRight[name] = true
 	playerForce[name] = 0
-	playerImage[name] = 99999
 	delayCountPass[name] = false
 	playerPressSpace[name] = false
 
@@ -53,5 +53,7 @@ function eventNewPlayer(name)
 
 	if mode == "lobby" then
 		showLobbyTextAreas(name)
+	else
+		tfm.exec.addImage("img@19c1981123a", "?99", 10, -110, name, 0.98)
 	end
 end

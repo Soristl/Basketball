@@ -14,7 +14,9 @@ function shootBall(name, x, y)
 
 	if playerForce[name] <= 1 then
 		playerForce[name] = 0
-		tfm.exec.removeImage(playerImage[name])
+		ui.removeTextArea(58, name)
+		ui.removeTextArea(59, name)
+		ui.removeTextArea(60, name)
 
 		-- system.bindKeyboard(name, 32, false, false)
 
@@ -138,7 +140,9 @@ function shootBall(name, x, y)
 
 	canCatchBall = false
 
-	tfm.exec.removeImage(playerImage[name])
+	ui.removeTextArea(58, name)
+	ui.removeTextArea(59, name)
+	ui.removeTextArea(60, name)
 	tfm.exec.removeImage(playerArrowImage)
 	playerLastShoot = name
 	lastBallCoordX = x

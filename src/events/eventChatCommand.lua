@@ -268,12 +268,14 @@ function eventChatCommand(name, c)
 			tfm.exec.movePlayer(name, 800, 50)
 
 			if name == ballOwner then
-				tfm.exec.removeImage(playerImage[ballOwner])
+				ui.removeTextArea(58, ballOwner)
+				ui.removeTextArea(59, ballOwner)
+				ui.removeTextArea(60, ballOwner)
 				tfm.exec.removeImage(playerArrowImage)
 				ballOwner = ""
 				lastBallCoordX = x
 				tfm.exec.removeImage(ballIdImage)
-				playerForce[name] = 1
+				playerForce[name] = 0
 				removeTimer("chargeBallForce" .. name)
 				removeTimer("canCatchBall")
 

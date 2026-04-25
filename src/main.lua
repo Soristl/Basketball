@@ -27,7 +27,6 @@ local playerDelayWall = {}
 local playerCanGetBall = {}
 local playerTeam = {}
 local playerForce = {}
-local playerImage = {}
 local playerPressSpace = {}
 local keys = { 0, 1, 2, 3, 32, 76 }
 local ballOwner = ""
@@ -35,7 +34,7 @@ local ballOwnerPressDown = false
 local playerLastShoot = ""
 local playerLastPass = ""
 local canCatchBall = true
-local ballIdImage = 0
+local ballIdImage = 999999
 local ballCanShoot = false
 local playerArrowImage = 0
 local lastBallCoordX = 0
@@ -50,20 +49,4 @@ local rankPlayer = {}
 local playerTeamHistory = {}
 local rankRoom = {}
 local delayCountPass = {}
-
-
--- for i = 1, 29 do
--- 	rankPlayer["G" .. tostring(i) .. "#0000"] = {
--- 		name = "G" .. tostring(i) .. "#0000",
--- 		matches = 0,
--- 		wins = 0,
--- 		winRatio = 0,
--- 		def = 0,
--- 		passes = 0,
--- 		assists = 0,
--- 		d3 = 0,
--- 		d2 = 0,
--- 		points = 0,
--- 		total = 0
--- 	}
--- end
+local lastPlayerKey = {}

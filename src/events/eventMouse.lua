@@ -45,7 +45,9 @@ function eventMouse(name, x, y)
 					end
 
 					if playerSelected ~= "" then
-						tfm.exec.removeImage(playerImage[name])
+						ui.removeTextArea(58, name)
+						ui.removeTextArea(59, name)
+						ui.removeTextArea(60, name)
 						system.bindKeyboard(name, 32, false, false)
 						if not delayCountPass[name] then
 							rankPlayer[name].passes = rankPlayer[name].passes + 1
@@ -127,7 +129,9 @@ function eventMouse(name, x, y)
 					end
 
 					if playerSelected ~= "" then
-						tfm.exec.removeImage(playerImage[name])
+						ui.removeTextArea(58, name)
+						ui.removeTextArea(59, name)
+						ui.removeTextArea(60, name)
 						system.bindKeyboard(name, 32, false, false)
 						if not delayCountPass[name] then
 							rankPlayer[name].passes = rankPlayer[name].passes + 1

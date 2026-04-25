@@ -49,7 +49,6 @@ function init()
 		}
 		isPlayerDirectionRight[name] = true
 		playerForce[name] = 0
-		playerImage[name] = 999999
 		rankSettings[name] = {
 			page = 1,
 			sort = "total",
@@ -58,6 +57,7 @@ function init()
 
 		playerPressSpace[name] = false
 		playerTeamHistory[name] = {}
+		lastPlayerKey[name] = 0
 
 		if rankPlayer[name] == nil then
 			rankPlayer[name] = {

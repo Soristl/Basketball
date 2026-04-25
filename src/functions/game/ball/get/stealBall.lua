@@ -11,7 +11,7 @@ function stealBall(name, coordinatesX, coordinatesY)
 				playerCanGetBall[name] = true
 			end
 		end,
-		500,
+		1500,
 		1,
 		"canCatch"
 	)
@@ -35,11 +35,15 @@ function stealBall(name, coordinatesX, coordinatesY)
 	local minX = 30
 	local minY = 30
 
-	if playerVX > 4 or playerVX < -4 then
-		print("aq")
-		minX = 50
-		minY = 50
+	if lastPlayerKey[name] == lastPlayerKey[ballOwner] then
+		minX = 85
 	end
+
+	-- if playerVX > 4 or playerVX < -4 then
+	-- 	print("aq")
+	-- 	minX = 50
+	-- 	minY = 50
+	-- end
 
 	if isCorner and coordinatesY <= 205 and playerOwner.y <= 205 then
 		minX = 200
@@ -50,7 +54,9 @@ function stealBall(name, coordinatesX, coordinatesY)
 	print(minY)
 
 	if (math.abs(coordinatesX - playerX) <= minX and math.abs(coordinatesY - playerY) <= minY) then
-		tfm.exec.removeImage(playerImage[ballOwner])
+		ui.removeTextArea(58, ballOwner)
+		ui.removeTextArea(59, ballOwner)
+		ui.removeTextArea(60, ballOwner)
 		tfm.exec.removeImage(playerArrowImage)
 		tfm.exec.removeImage(ballIdImage)
 		canCatchBall = false
