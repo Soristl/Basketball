@@ -6,6 +6,11 @@ function init()
 		stopTimerSeconds = 15
 	}
 
+	minPlayerRed = 1
+	minPlayerBlue = 1
+
+	canPass = true
+
 	playersRed = {
 		[1] = { name = "" },
 		[2] = { name = "" },
@@ -43,6 +48,10 @@ function init()
 		playerDelayWall[name] = false
 		playerCanGetBall[name] = true
 		playersInGame[name] = false
+		if rankingSelected[name] == nil then
+			rankingSelected[name] = "room"
+		end
+
 		playerTeam[name] = {
 			team = "",
 			index = 1
@@ -58,6 +67,8 @@ function init()
 		playerPressSpace[name] = false
 		playerTeamHistory[name] = {}
 		lastPlayerKey[name] = 0
+
+		rankPlayerMatch = {}
 
 		if rankPlayer[name] == nil then
 			rankPlayer[name] = {

@@ -61,6 +61,18 @@ function eventTextAreaCallback(id, name, c)
 		rankSettings[name].sort = sortValue
 
 		rankingUI(name)
+	elseif c == "room" then
+		rankingSelected[name] = "room"
+		rankSettings[name].sort = "total"
+		rankSettings[name].page = 1
+		rankSettings[name].open = true
+		rankingUI(name)
+	elseif c == "match" then
+		rankingSelected[name] = "match"
+		rankSettings[name].sort = "total"
+		rankSettings[name].page = 1
+		rankSettings[name].open = true
+		rankingUI(name)
 	elseif c == "closeRanking" then
 		removeRankingUI(name)
 		rankSettings[name].open = false

@@ -5,6 +5,8 @@ function stealBall(name, coordinatesX, coordinatesY)
 	local playerOwner = tfm.get.room.playerList[ballOwnerNickname]
 	playerCanGetBall[name] = false
 
+	removeTimer("canCatch" .. name .. "")
+
 	canCatch = addTimer(
 		function(i)
 			if i == 1 then
@@ -13,7 +15,7 @@ function stealBall(name, coordinatesX, coordinatesY)
 		end,
 		1500,
 		1,
-		"canCatch"
+		"canCatch" .. name .. ""
 	)
 
 	if playerOwner == nil then return end
@@ -28,16 +30,19 @@ function stealBall(name, coordinatesX, coordinatesY)
 	print("STEAL BALL " .. name)
 	print(math.abs(coordinatesX - playerX))
 	print(math.abs(coordinatesY - playerY))
+	print(canCatchBall)
 	print("===")
 
 	local isCorner = isCornerCourt(coordinatesX)
 
-	local minX = 30
+	local minX = 45
 	local minY = 30
 
-	if lastPlayerKey[name] == lastPlayerKey[ballOwner] then
-		minX = 85
-	end
+	if not canCatchBall then return end
+
+	-- if lastPlayerKey[name] == lastPlayerKey[ballOwner] then
+	-- 	minX = 85
+	-- end
 
 	-- if playerVX > 4 or playerVX < -4 then
 	-- 	print("aq")
@@ -60,6 +65,7 @@ function stealBall(name, coordinatesX, coordinatesY)
 		tfm.exec.removeImage(playerArrowImage)
 		tfm.exec.removeImage(ballIdImage)
 		canCatchBall = false
+		timerCanCatchBall = true
 		playerForce[ballOwner] = 0
 		ballOwner = name
 		playerForce[ballOwner] = 0
@@ -68,11 +74,13 @@ function stealBall(name, coordinatesX, coordinatesY)
 		playerLastPass = ""
 		setPlayerArrowImage(name)
 		rankPlayer[name].def = rankPlayer[name].def + 1
+		rankPlayerMatch[name].def = rankPlayerMatch[name].def + 1
 
 		addTimer(
 			function(i)
 				if i == 1 then
 					canCatchBall = true
+					timerCanCatchBall = false
 				end
 			end,
 			3000,

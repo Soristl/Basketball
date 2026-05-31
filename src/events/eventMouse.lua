@@ -13,7 +13,7 @@ function eventMouse(name, x, y)
 	if mode == "game" then
 		local playerSelected = ""
 		local minX = 9999999
-		if ballOwner == name then
+		if ballOwner == name and canPass then
 			if playerTeam[name].team == "red" then
 				for i = 1, #playersRed do
 					if playersRed[i].name ~= name then
@@ -51,6 +51,7 @@ function eventMouse(name, x, y)
 						system.bindKeyboard(name, 32, false, false)
 						if not delayCountPass[name] then
 							rankPlayer[name].passes = rankPlayer[name].passes + 1
+							rankPlayerMatch[name].passes = rankPlayerMatch[name].passes + 1
 
 							delayCountPass[name] = true
 
@@ -71,17 +72,19 @@ function eventMouse(name, x, y)
 
 						setPlayerArrowImage(playerSelected)
 
+						ui.updateTextArea(61, "<font size='16px'><r>" .. string.sub(name, 1, #name - 5) .. "<n> passed to <r>" .. string.sub(playerSelected, 1, #playerSelected - 5) .. "<n>", nil)
+
 						ballOwner = playerSelected
 						playerForce[playerSelected] = 0
 						ballOwnerPressDown = false
-						canCatchBall = false
+						canPass = false
 						playerLastPass = name
 
 						addTimer(
 							function(i)
-								canCatchBall = true
+								canPass = true
 							end,
-							2000,
+							1500,
 							1,
 							"canCatchBall"
 						)
@@ -135,6 +138,7 @@ function eventMouse(name, x, y)
 						system.bindKeyboard(name, 32, false, false)
 						if not delayCountPass[name] then
 							rankPlayer[name].passes = rankPlayer[name].passes + 1
+							rankPlayerMatch[name].passes = rankPlayerMatch[name].passes + 1
 
 							delayCountPass[name] = true
 
@@ -155,17 +159,19 @@ function eventMouse(name, x, y)
 
 						setPlayerArrowImage(playerSelected)
 
+						ui.updateTextArea(61, "<font size='16px'><bv>" .. string.sub(name, 1, #name - 5) .. "<n> passed to <bv>" .. string.sub(playerSelected, 1, #playerSelected - 5) .. "<n>", nil)
+
 						ballOwner = playerSelected
 						playerForce[playerSelected] = 0
 						ballOwnerPressDown = false
-						canCatchBall = false
+						canPass = false
 						playerLastPass = name
 
 						addTimer(
 							function(i)
-								canCatchBall = true
+								canPass = true
 							end,
-							2000,
+							1500,
 							1,
 							"canCatchBall"
 						)

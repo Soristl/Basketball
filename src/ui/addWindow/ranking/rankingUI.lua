@@ -17,7 +17,35 @@ function rankingUI(name)
 	local colorBackground = 0x2d5a61
 	local indexPositions = positionsString(rankSettings[name].page)
 
-	ui.addWindow(24, "<p align='center'><font size='16px'>Room Ranking", name, 25, 60, 750, 300, 1, false, true, "<p align='center'><a href='event:closeRanking'>Close")
+	if rankingSelected[name] == "room" then
+		ui.addWindow(
+			24,
+			"<p align='center'><font size='16px'>Room Ranking<br></font><font size='12px'><ch>Room ranking<n> | <a href='event:match'>Match ranking</a>",
+			name,
+			25,
+			60,
+			750,
+			300,
+			1,
+			false,
+			true,
+			"<p align='center'><a href='event:closeRanking'>Close"
+		)
+	else
+		ui.addWindow(
+			24,
+			"<p align='center'><font size='16px'>Room Ranking<br></font><font size='12px'><a href='event:room'>Room ranking</a> | <ch>Match ranking</n>",
+			name,
+			25,
+			60,
+			750,
+			300,
+			1,
+			false,
+			true,
+			"<p align='center'><a href='event:closeRanking'>Close"
+		)
+	end
 
 	for i = 9999559, 9999568 do
 		local index = (i - 9999558) + (10 * (page - 1))
@@ -28,10 +56,23 @@ function rankingUI(name)
 			local winRatioString = tostring(rank[index].winRatio)
 			ui.addTextArea(i, "", name, 35, y, 730, 6, colorBackground, colorBackground, 1, true)
 
-			if page == 1 and index == 1 then
+			if page == 1 and index == 1 and rankingSelected[name] == "room" then
 				namesRank = "" .. namesRank .. "<br>" .. indexPositions[(i - 9999558)] .. " <cs>" .. string.sub(rank[index].name, 1, #rank[index].name - 5) .. "<n><bl>" .. string.sub(rank[index].name, #rank[index].name - 4) .. "<n>"
 			else
-				namesRank = "" .. namesRank .. "<br>" .. indexPositions[(i - 9999558)] .. " " .. string.sub(rank[index].name, 1, #rank[index].name - 5) .. "<bl>" .. string.sub(rank[index].name, #rank[index].name - 4) .. "<n>"
+				if rankingSelected[name] == "match" then
+					local color = ""
+
+					if rank[index].color == "red" then
+						color = "<r>"
+					else
+						color = "<bv>"
+					end
+
+					namesRank =
+						"" .. namesRank .. "<br>" .. indexPositions[(i - 9999558)] .. " " .. color .. "" .. string.sub(rank[index].name, 1, #rank[index].name - 5) .. "<n><bl>" .. string.sub(rank[index].name, #rank[index].name - 4) .. "<n>"
+				else
+					namesRank = "" .. namesRank .. "<br>" .. indexPositions[(i - 9999558)] .. " " .. string.sub(rank[index].name, 1, #rank[index].name - 5) .. "<bl>" .. string.sub(rank[index].name, #rank[index].name - 4) .. "<n>"
+				end
 			end
 			matchesRank = "" .. matchesRank .. "<br>" .. rank[index].matches .. ""
 			winsRank = "" .. winsRank .. "<br>" .. rank[index].wins .. ""

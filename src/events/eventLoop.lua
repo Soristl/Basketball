@@ -14,7 +14,7 @@ function eventLoop()
 		if x == 0 then
 			local quantity = quantityPlayers()
 
-			if quantity.red >= 0 and quantity.blue >= 0 then
+			if quantity.red >= minPlayerRed and quantity.blue >= minPlayerBlue then
 				mode = "wait-start"
 
 				startGame()
@@ -27,8 +27,18 @@ function eventLoop()
 		local playerStats = tfm.get.room.playerList[name]
 
 		if name ~= "" then
+			print(canCatchBall)
 			if playerPressSpace[name] then
 				if playerForce[name] <= 6 then
+					if playerForce[name] >= 1 then
+						if playerForce[name] % 2 == 0 and not timerCanCatchBall then
+							canCatchBall = true
+						else
+							if not timerCanCatchBall then
+								canCatchBall = false
+							end
+						end
+					end
 					playerForce[name] = playerForce[name] + 1
 				else
 					playerForce[name] = 0
@@ -47,6 +57,7 @@ function eventLoop()
 
 		if x == 0 then
 			updateRanking()
+			ui.removeTextArea(61, nil)
 			init()
 		end
 	end

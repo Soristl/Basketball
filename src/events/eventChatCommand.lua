@@ -20,6 +20,20 @@ function eventChatCommand(name, c)
 			lobbyTimer = os.time() + 5000
 		elseif command == "resettimer" and admins[name] then
 			lobbyTimer = os.time() + 15000
+		elseif string.sub(command, 1, 9) == "autostart" then
+			local args = split(command)
+
+			if args[2] ~= "true" and args[2] ~= "false" then return end
+
+			if args[2] == "false" then
+				minPlayerRed = 1
+				minPlayerBlue = 1
+
+				return
+			end
+
+			minPlayerRed = 0
+			minPlayerBlue = 0
 		end
 	elseif mode == "game" then
 		if string.sub(command, 1, 2) == "fs" then
@@ -107,6 +121,8 @@ function eventChatCommand(name, c)
 							index = i
 						}
 
+						createMatchRankingPlayer(name, "blue")
+
 						local foundTeam = false
 
 						for i = 1, #playerTeamHistory[name] do
@@ -124,6 +140,7 @@ function eventChatCommand(name, c)
 
 							playerTeamHistory[length + 1] = "blue"
 							rankPlayer[name].matches = rankPlayer[name].matches + 1
+							rankPlayerMatch[name].matches = rankPlayerMatch[name].matches + 1
 						end
 
 						teleportPlayerToTeam(name)
@@ -155,6 +172,8 @@ function eventChatCommand(name, c)
 							index = i
 						}
 
+						createMatchRankingPlayer(name, "red")
+
 						local foundTeam = false
 
 						for i = 1, #playerTeamHistory[name] do
@@ -172,6 +191,7 @@ function eventChatCommand(name, c)
 
 							playerTeamHistory[length + 1] = "red"
 							rankPlayer[name].matches = rankPlayer[name].matches + 1
+							rankPlayerMatch[name].matches = rankPlayerMatch[name].matches + 1
 						end
 
 						teleportPlayerToTeam(name)
@@ -203,6 +223,8 @@ function eventChatCommand(name, c)
 							index = i
 						}
 
+						createMatchRankingPlayer(name, "red")
+
 						local foundTeam = false
 
 						for i = 1, #playerTeamHistory[name] do
@@ -220,6 +242,7 @@ function eventChatCommand(name, c)
 
 							playerTeamHistory[length + 1] = "red"
 							rankPlayer[name].matches = rankPlayer[name].matches + 1
+							rankPlayerMatch[name].matches = rankPlayerMatch[name].matches + 1
 						end
 
 						teleportPlayerToTeam(name)

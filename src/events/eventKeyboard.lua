@@ -86,9 +86,11 @@ function eventKeyboard(name, key, down, x, y, xv, yv)
 			playerPressSpace[name] = false
 		end
 
-		if key == 32 and playerCanGetBall[name] and ballOwner ~= name and down and canCatchBall then
+		if key == 32 and playerCanGetBall[name] and ballOwner ~= name and down then
 			if ballOwner == "" then
-				getBall(name, x, y)
+				if canCatchBall then
+					getBall(name, x, y)
+				end
 			else
 				stealBall(name, x, y)
 			end

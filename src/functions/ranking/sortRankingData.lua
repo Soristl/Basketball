@@ -1,21 +1,49 @@
 function sortRankingData(name)
 	local tempRankRoom = {}
 
-	for name, data in pairs(rankPlayer) do
+	local rank = {}
+
+	if rankingSelected[name] == "room" then
+		rank = rankPlayer
+	else
+		rank = rankPlayerMatch
+	end
+
+	for name, data in pairs(rank) do
 		if data.matches >= 0 then
-			tempRankRoom[#tempRankRoom + 1] = {
-				name = name,
-				matches = data.matches,
-				wins = data.wins,
-				winRatio = winRatioPercentage(data.wins, data.matches),
-				def = data.def,
-				passes = data.passes,
-				assists = data.assists,
-				d3 = data.d3,
-				d2 = data.d2,
-				points = data.d3 + data.d2,
-				total = data.def + data.passes + data.assists + data.d3 + data.d2 + data.points
-			}
+			if rankingSelected[name] == "room" then
+				tempRankRoom[#tempRankRoom + 1] = {
+					name = name,
+					color = "",
+					matches = data.matches,
+					wins = data.wins,
+					winRatio = winRatioPercentage(data.wins, data.matches),
+					def = data.def,
+					passes = data.passes,
+					assists = data.assists,
+					d3 = data.d3,
+					d2 = data.d2,
+					points = data.d3 + data.d2,
+					total = data.def + data.passes + data.assists + data.d3 + data.d2 + data.points
+				}
+			else
+				if data.name ~= "" then
+					tempRankRoom[#tempRankRoom + 1] = {
+						name = name,
+						color = data.color,
+						matches = data.matches,
+						wins = data.wins,
+						winRatio = winRatioPercentage(data.wins, data.matches),
+						def = data.def,
+						passes = data.passes,
+						assists = data.assists,
+						d3 = data.d3,
+						d2 = data.d2,
+						points = data.d3 + data.d2,
+						total = data.def + data.passes + data.assists + data.d3 + data.d2 + data.points
+					}
+				end
+			end
 		end
 	end
 

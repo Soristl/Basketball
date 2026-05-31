@@ -6,9 +6,11 @@ function addMatchToPlayers()
 			if playerTeam[name].team == "red" then
 				playerTeamHistory[name][length + 1] = "red"
 				rankPlayer[name].matches = rankPlayer[name].matches + 1
+				rankPlayerMatch[name].matches = rankPlayerMatch[name].matches + 1
 			elseif playerTeam[name].team == "blue" then
 				playerTeamHistory[name][length + 1] = "blue"
 				rankPlayer[name].matches = rankPlayer[name].matches + 1
+				rankPlayerMatch[name].matches = rankPlayerMatch[name].matches + 1
 			end
 		end
 	end

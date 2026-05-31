@@ -21,6 +21,7 @@ function eventNewPlayer(name)
 	playerForce[name] = 0
 	delayCountPass[name] = false
 	playerPressSpace[name] = false
+	rankingSelected[name] = "room"
 
 	if playerTeamHistory[name] == nil then
 		playerTeamHistory[name] = {}
@@ -54,6 +55,7 @@ function eventNewPlayer(name)
 	if mode == "lobby" then
 		showLobbyTextAreas(name)
 	else
-		tfm.exec.addImage("img@19c1981123a", "?99", 10, -110, name, 0.98)
+		--tfm.exec.addImage("img@19c1981123a", "?99", 10, -110, name, 0.98)
+		ui.addTextArea(61, "<font size='16px'>", name, 5, 375, 400, 30, 0x3E2B20, 0x3E2B20, 1, true)
 	end
 end

@@ -13,6 +13,7 @@ function startGame()
 
 	-- tfm.exec.addImage("img@19c1981123a", "?99", 10, -110, nil, 0.98)
 
+	createMatchRanking()
 	addMatchToPlayers()
 	teleportPlayers()
 	spawnInitialBall()
@@ -28,6 +29,8 @@ function startGame()
 		1,
 		"initGame"
 	)
+
+	ui.addTextArea(61, "<font size='16px'>", nil, 5, 375, 400, 30, 0x3E2B20, 0x3E2B20, 1, true)
 
 	verifyBallPoint()
 end
