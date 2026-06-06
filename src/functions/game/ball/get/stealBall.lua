@@ -3,7 +3,23 @@ function stealBall(name, coordinatesX, coordinatesY)
 
 	local ballOwnerNickname = ballOwner
 	local playerOwner = tfm.get.room.playerList[ballOwnerNickname]
-	playerCanGetBall[name] = false
+
+	local delay = 500
+
+	local countPlayers = calculatePlayersOnArea(ballOwnerNickname)
+
+	if countPlayers == 0 or countPlayers == 1 then
+		delay = 500
+	elseif countPlayers == 2 then
+		delay = 1000
+	elseif countPlayers >= 3 then
+		delay = 1500
+	end
+
+	print("===")
+	print("DELAY PARA PEGAR DENOVO")
+	print(delay)
+	print("===")
 
 	removeTimer("canCatch" .. name .. "")
 
@@ -13,10 +29,16 @@ function stealBall(name, coordinatesX, coordinatesY)
 				playerCanGetBall[name] = true
 			end
 		end,
-		500,
+		delay,
 		1,
 		"canCatch" .. name .. ""
 	)
+
+	if playerCanGetBall[name] then
+		playerCanGetBall[name] = false
+	else
+		return
+	end
 
 	if playerOwner == nil then return end
 
